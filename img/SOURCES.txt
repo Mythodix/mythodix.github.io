@@ -1,0 +1,22 @@
+Card background images (free licenses). Local copies are optimized WebP.
+
+krystles-kitchen.webp
+  Source: https://www.pexels.com/photo/purple-flowers-on-brown-wooden-table-5480238/
+  Direct: https://images.pexels.com/photos/5480238/pexels-photo-5480238.jpeg
+  Photographer: Yan Krukau
+  License: Pexels License (free to use)
+  Subject: Dried herbs and flowers with a stone mortar and pestle on a wooden table.
+
+biognosis.webp
+  Source: https://images.unsplash.com/photo-1462331940025-496dfbfc7564
+  Subject: Hubble image of the Bubble Nebula (NGC 7635), via Unsplash
+  Original credit: NASA, ESA, and the Hubble Heritage Team (STScI/AURA)
+  License: Unsplash License (free to use); Hubble/NASA imagery is also public domain
+  Overlay: original decorative sacred-geometry SVG on the card, not part of the photo.
+
+roots.webp
+  Source: https://www.pexels.com/photo/rows-of-seedlings-in-a-sunlit-nursery-32209937/
+  Direct: https://images.pexels.com/photos/32209937/pexels-photo-32209937.jpeg
+  Photographer: Armando Avelar
+  License: Pexels License (free to use)
+  Subject: Young seedlings in soil-filled nursery bags, with green foliage.

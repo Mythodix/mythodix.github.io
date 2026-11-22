@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mythodix</title>
+  <meta name="description" content="Sites by Mythodix: Krystle's Kitchen, Biognosis, and Roots.">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090b;
+      --surface: #141518;
+      --surface-hover: #1a1c21;
+      --ink: #f2f4f7;
+      --muted: #9aa3b2;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-hover: rgba(138, 180, 248, 0.45);
+      --accent: #8ab4f8;
+      --accent-hover: #b8d0fb;
+      --glow: rgba(80, 140, 255, 0.28);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --font: "Outfit", Roboto, "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(920px 480px at 50% -18%, var(--glow), transparent 58%),
+        radial-gradient(640px 380px at 100% 8%, rgba(120, 90, 255, 0.12), transparent 52%),
+        radial-gradient(620px 360px at 0% 100%, rgba(40, 150, 255, 0.08), transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 1.05rem;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--accent); }
+
+    a:hover { color: var(--accent-hover); }
+
+    .page {
+      width: min(1080px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 2.75rem 0 2.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.6rem;
+    }
+
+    .mark {
+      display: inline-block;
+      width: 36px;
+      height: 4px;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(90deg, #6ea8ff 0%, #a78bfa 100%);
+      box-shadow: 0 0 18px rgba(110, 168, 255, 0.45);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Orbitron", var(--font);
+      font-weight: 700;
+      font-size: clamp(2.15rem, 5.8vw, 3.65rem);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .sites {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+
+    .card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--surface);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.65rem 1.5rem 1.4rem;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card-kitchen { background-image: url("img/krystles-kitchen.webp"); }
+    .card-biognosis { background-image: url("img/biognosis.webp"); background-position: 58% 45%; }
+    .card-roots { background-image: url("img/roots.webp"); background-position: 50% 40%; }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 9, 11, 0.58) 0%,
+        rgba(8, 9, 11, 0.74) 42%,
+        rgba(8, 9, 11, 0.92) 100%
+      );
+    }
+
+    .card-biognosis::before {
+      background: linear-gradient(
+        200deg,
+        rgba(8, 9, 11, 0.42) 0%,
+        rgba(8, 9, 11, 0.68) 48%,
+        rgba(8, 9, 11, 0.90) 100%
+      );
+    }
+
+    .card-roots::before {
+      background: linear-gradient(
+        180deg,
+        rgba(8, 9, 11, 0.55) 0%,
+        rgba(8, 9, 11, 0.80) 38%,
+        rgba(8, 9, 11, 0.94) 100%
+      );
+    }
+
+    .card-symbol {
+      position: absolute;
+      right: -8%;
+      top: -12%;
+      width: 72%;
+      height: auto;
+      aspect-ratio: 1;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.26;
+      color: #d7ecff;
+    }
+
+    .card > *:not(.card-symbol) { position: relative; z-index: 2; }
+
+    .card h2 { text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7); }
+    .card p { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7); }
+    .card .go { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7); }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--line-hover);
+      box-shadow:
+        0 20px 44px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(138, 180, 248, 0.08),
+        0 12px 36px rgba(80, 140, 255, 0.12);
+    }
+
+    .card:hover::before,
+    .card:focus-visible::before {
+      background: linear-gradient(
+        180deg,
+        rgba(8, 9, 11, 0.55) 0%,
+        rgba(8, 9, 11, 0.74) 40%,
+        rgba(8, 9, 11, 0.92) 100%
+      );
+    }
+
+    .card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .card h2 {
+      margin: 0 0 0.6rem;
+      font-family: var(--font);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .nowrap { white-space: nowrap; }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 400;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card .go {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1.25rem;
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card .go span[aria-hidden="true"] {
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover .go span[aria-hidden="true"],
+    .card:focus-visible .go span[aria-hidden="true"] {
+      transform: translateX(4px);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 400;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(154, 163, 178, 0.35);
+    }
+
+    footer a:hover {
+      color: var(--accent-hover);
+      border-bottom-color: currentColor;
+    }
+
+    @media (max-width: 800px) {
+      .page {
+        width: min(1080px, calc(100% - 2rem));
+        padding: 1.65rem 0 1.35rem;
+      }
+
+      .mark { margin-bottom: 1rem; }
+
+      .sites {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .card { padding: 1.25rem 1.2rem 1.1rem; }
+
+      .card-symbol {
+        width: 46%;
+        right: -4%;
+        top: -6%;
+        opacity: 0.22;
+      }
+
+      .card .go { margin-top: 1rem; }
+
+      header { margin-bottom: 1.45rem; }
+
+      footer { margin-top: 1.6rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card,
+      .card .go span[aria-hidden="true"] { transition: none; }
+
+      .card:hover,
+      .card:focus-visible { transform: none; }
+    }
+
+    @media print {
+      :root {
+        --bg: #fff;
+        --surface: #fff;
+        --surface-hover: #fff;
+        --ink: #000;
+        --muted: #333;
+        --line: #444;
+        --line-hover: #444;
+        --accent: #000;
+        --accent-hover: #000;
+        --glow: transparent;
+        --shadow: none;
+      }
+
+      html { color-scheme: light; }
+
+      body {
+        background: #fff;
+        color: #000;
+        min-height: 0;
+        font-size: 11pt;
+        -webkit-font-smoothing: auto;
+      }
+
+      .page {
+        width: auto;
+        max-width: none;
+        padding: 0;
+        flex: none;
+        justify-content: flex-start;
+      }
+
+      header { margin-bottom: 1.2rem; }
+
+      .mark,
+      .card .go { display: none; }
+
+      h1 {
+        letter-spacing: 0.02em;
+        color: #000;
+        white-space: normal;
+      }
+
+      .sites {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .card,
+      .card-kitchen,
+      .card-biognosis,
+      .card-roots {
+        break-inside: avoid;
+        box-shadow: none;
+        background: #fff !important;
+        background-image: none !important;
+        border: 1px solid #000;
+        border-radius: 0;
+        padding: 0.85rem 0.9rem;
+      }
+
+      .card::before,
+      .card-symbol { display: none; }
+
+      .card h2,
+      .card p,
+      .card .go { text-shadow: none; }
+
+      .card:hover,
+      .card:focus-visible {
+        transform: none;
+        box-shadow: none;
+        background: #fff;
+      }
+
+      .card h2,
+      .card p { color: #000; }
+
+      .card p::after {
+        content: " — " attr(data-url);
+        display: block;
+        margin-top: 0.35rem;
+        color: #000;
+        font-size: 0.9em;
+      }
+
+      footer {
+        margin-top: 1.4rem;
+        color: #000;
+      }
+
+      footer a {
+        color: #000;
+        border-bottom: none;
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="mark" aria-hidden="true"></div>
+      <h1>Mythodix</h1>
+    </header>
+
+    <main>
+      <ul class="sites">
+        <li>
+          <a class="card card-kitchen" href="https://mythodix.github.io/krystles-kitchen/">
+            <h2>Krystle’s Kitchen</h2>
+            <p data-url="https://mythodix.github.io/krystles-kitchen/">A beginner-friendly herbal remedy guide covering 11 body systems, 22 original remedies, and cited additions from traditional herbalists.</p>
+            <span class="go">Visit site <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="card card-biognosis" href="https://mythodix.github.io/biognosis/">
+            <svg class="card-symbol" viewBox="0 0 200 200" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="1.1">
+                <circle cx="100" cy="100" r="84"/>
+                <circle cx="100" cy="100" r="56"/>
+                <circle cx="100" cy="100" r="28"/>
+                <circle cx="100" cy="52" r="28"/>
+                <circle cx="100" cy="148" r="28"/>
+                <circle cx="58.43" cy="76" r="28"/>
+                <circle cx="141.57" cy="76" r="28"/>
+                <circle cx="58.43" cy="124" r="28"/>
+                <circle cx="141.57" cy="124" r="28"/>
+                <polygon points="100,24 166,138 34,138" stroke-width="0.9" opacity="0.85"/>
+                <polygon points="100,176 34,62 166,62" stroke-width="0.9" opacity="0.7"/>
+              </g>
+            </svg>
+
+            <h2>Biognosis</h2>
+            <p data-url="https://mythodix.github.io/biognosis/">The Biognostic Codex of Rendered Reality and the One Consciousness.</p>
+            <span class="go">Visit site <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="card card-roots" href="https://mythodix.github.io/roots/">
+            <h2>Roots</h2>
+            <p data-url="https://mythodix.github.io/roots/">An organic autoflower feeding guide: <span class="nowrap">Dr. Earth</span> starter soil mix plus a guano and langbeinite flowering top-dress for six <span class="nowrap">5-gallon</span> grow bags.</p>
+            <span class="go">Visit site <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <a href="https://github.com/Mythodix">github.com/Mythodix</a>
+    </footer>
+  </div>
+</body>
+</html>
