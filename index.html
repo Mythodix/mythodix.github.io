@@ -695,8 +695,9 @@
         return "https://suno.com/song/" + track.id;
       }
 
-      function embedUrl(track) {
-        return "https://suno.com/embed/" + track.id;
+      function embedUrl(track, autoplay) {
+        const url = "https://suno.com/embed/" + track.id;
+        return autoplay ? url + "?autoplay=1" : url;
       }
 
       function play(index, options) {
@@ -705,7 +706,7 @@
         const track = tracks[current];
         now.textContent = track.title;
         frame.title = track.title;
-        frame.setAttribute("src", embedUrl(track));
+        frame.setAttribute("src", embedUrl(track, true));
         frame.replaceChildren();
         const fallback = document.createElement("a");
         fallback.href = songUrl(track);
